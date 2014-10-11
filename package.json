@@ -1,0 +1,20 @@
+{
+	"name": "miyojs-filter-join",
+	"version": "0.0.1",
+	"description": "join - join filter for Miyo",
+	"main": "join.js",
+	"scripts": {
+		"test": "mocha"
+	},
+	"dependencies": {
+	},
+	"author": {
+		"name": "narazaka",
+		"url": "http://narazaka.net/"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Narazaka/miyojs-filter-join.git"
+	}
+}
