@@ -3,8 +3,8 @@
 unless MiyoFilters?
 	MiyoFilters = {}
 
-MiyoFilters.join = (argument, request, id, stash) ->
-	return unless argument.join?
+MiyoFilters.join = type: 'data-value', filter: (argument, request, id, stash) ->
+	return unless argument?.join?
 	values = []
 	for element in argument.join
 		values.push @call_entry element, request, id, stash
