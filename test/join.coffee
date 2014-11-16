@@ -1,9 +1,22 @@
-chai = require 'chai'
+if require?
+	chai = require 'chai'
+else
+	chai = @chai
 chai.should()
 expect = chai.expect
-sinon = require 'sinon'
-Miyo = require 'miyojs'
-MiyoFilters = require '../join.js'
+if require?
+	chaiAsPromised = require 'chai-as-promised'
+else
+	chaiAsPromised = @chaiAsPromised
+chai.use chaiAsPromised
+if require?
+	sinon = require 'sinon'
+	Miyo = require 'miyojs'
+	MiyoFilters = require '../join.js'
+else
+	sinon = @sinon
+	Miyo = @Miyo
+	MiyoFilters = @MiyoFilters
 
 describe 'join', ->
 	ms = null
@@ -21,15 +34,15 @@ describe 'join', ->
 	it 'should return undefined with no argument', ->
 		entry =
 			filters: ['join']
-		ret = ms.call_filters entry, request, id, stash
-		expect(ret).is.undefined
+		ms.call_filters entry, request, id, stash
+		.should.eventually.undefined
 	it 'should return empty string with 0 list', ->
 		entry =
 			filters: ['join']
 			argument:
 				join: []
-		ret = ms.call_filters entry, request, id, stash
-		expect(ret).equal ''
+		ms.call_filters entry, request, id, stash
+		.should.eventually.equal ''
 	it 'should return joined string with non-zero list', ->
 		entry =
 			filters: ['join']
@@ -38,8 +51,9 @@ describe 'join', ->
 					'elem 1'
 					'elem 2'
 				]
-		ret = ms.call_filters entry, request, id, stash
-		ms.call_entry.callCount.should.be.equal 2
-		ms.call_entry.firstCall.calledWith('elem 1').should.be.true
-		ms.call_entry.secondCall.calledWith('elem 2').should.be.true
-		expect(ret).equal 'elem 1elem 2'
+		ms.call_filters entry, request, id, stash
+		.then (ret) ->
+			ms.call_entry.callCount.should.be.equal 2
+			ms.call_entry.firstCall.calledWith('elem 1').should.be.true
+			ms.call_entry.secondCall.calledWith('elem 2').should.be.true
+			expect(ret).equal 'elem 1elem 2'

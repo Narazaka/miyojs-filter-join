@@ -4,7 +4,7 @@ COFFEE = $(wildcard *.coffee)
 JS = $(COFFEE:.coffee=.js)
 all: $(JS)
 .coffee.js:
-	coffee -cmb $^
+	coffee -cm $^
 clean:
 	rm *.js *.map
 test:

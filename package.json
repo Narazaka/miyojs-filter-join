@@ -1,6 +1,6 @@
 {
 	"name": "miyojs-filter-join",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "join - join filter for Miyo",
 	"keywords": ["miyojs", "miyojs-filter"],
 	"main": "join.js",
@@ -8,14 +8,16 @@
 		"test": "mocha"
 	},
 	"dependencies": {
+		"es6-promise": "^2.0.0"
 	},
 	"devDependencies": {
 		"coffee-script": ">= 1.8.0",
 		"mocha": ">= 1.20.1",
 		"chai": ">= 1.9.2",
+		"chai-as-promised": ">= 4.1.1",
 		"sinon": ">= 1.10.3",
 		"istanbul": ">= 0.3.2",
-		"miyojs": ">= 1.0.3"
+		"miyojs": "^2.0.0"
 	},
 	"author": {
 		"name": "narazaka",
