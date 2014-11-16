@@ -61,8 +61,8 @@
 
   if ((typeof module !== "undefined" && module !== null) && (module.exports != null)) {
     module.exports = MiyoFilters;
+  } else {
+    this.MiyoFilters = MiyoFilters;
   }
 
 }).call(this);
-
-//# sourceMappingURL=join.js.map

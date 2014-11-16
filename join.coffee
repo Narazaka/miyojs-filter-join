@@ -34,3 +34,5 @@ MiyoFilters.join = type: 'data-value', filter: (argument, request, id, stash) ->
 
 if module? and module.exports?
 	module.exports = MiyoFilters
+else
+	@MiyoFilters = MiyoFilters
